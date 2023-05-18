@@ -1,12 +1,13 @@
 function validateForm() {
-  var name = document.getElementById("name").value;
-  var mobilenumber = document.getElementById("mobilenumber").value;
-  var email = document.getElementById("email").value;
-  var subject = document.getElementById("subject").value;
-  var message = document.getElementById("message").value;
-  var msg1 = document.getElementById("msg1")
+  
+  const userNameValue = document.getElementById("name").value.trim();
+  const mobileNumberValue = document.getElementById("mobilenumber").value.trim();
+  const emailValue = document.getElementById("email").value.trim();
+  const subjectValue = document.getElementById("subject").value.trim();
+  const messageValue = document.getElementById("message").value.trim();
+  const msg1 = document.getElementById("msg1");
 
-  if (name == "") {
+  if (userNameValue === "") {
     msg1.innerHTML = "Name must be filled out"
     setTimeout(function () {
       msg1.innerHTML = ""
@@ -14,7 +15,7 @@ function validateForm() {
     return false;
   }
 
-  if (/\d/.test(name)) {
+  if (/\d/.test(userNameValue)) {
     msg1.innerHTML = "Name must be character"
     setTimeout(function () {
       msg1.innerHTML = ""
@@ -22,7 +23,7 @@ function validateForm() {
     return false
   }
 
-  if (mobilenumber == "") {
+  if (mobileNumberValue === "") {
     msg1.innerHTML = "Mobile Number must be filled out"
     setTimeout(function () {
       msg1.innerHTML = ""
@@ -30,7 +31,7 @@ function validateForm() {
     return false;
   }
 
-  if (isNaN(mobilenumber)) {
+  if (isNaN(mobileNumberValue)) {
     msg1.innerHTML = "Mobile Number must be Digits"
     setTimeout(function () {
       msg1.innerHTML = ""
@@ -38,7 +39,7 @@ function validateForm() {
     return false
   }
 
-  if (mobilenumber.length < 10) {
+  if (mobileNumberValue.length < 10) {
     msg1.innerHTML = "Mobile Number must have 10 digits"
     setTimeout(function () {
       msg1.innerHTML = ""
@@ -46,7 +47,7 @@ function validateForm() {
     return false
   }
 
-  if (mobilenumber.length > 10) {
+  if (mobileNumberValue.length > 10) {
     msg1.innerHTML = "Mobile Number must have only 10 digits"
     setTimeout(function () {
       msg1.innerHTML = ""
@@ -54,8 +55,16 @@ function validateForm() {
     return false
   }
 
+  if (emailValue === "") {
+    msg1.innerHTML = "Email must be filled out"
+    setTimeout(function () {
+      msg1.innerHTML = ""
+    }, 5000)
+    return false;
+  }
+
   var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (!emailRegex.test(email)) {
+  if (!emailRegex.test(emailValue)) {
     msg1.innerHTML = "Email must be a valid email address"
     setTimeout(function () {
       msg1.innerHTML = ""
@@ -63,7 +72,7 @@ function validateForm() {
     return false;
   }
 
-  if (subject == "") {
+  if (subjectValue === "") {
     msg1.innerHTML = "Subject must be filled out"
     setTimeout(function () {
       msg1.innerHTML = ""
@@ -72,7 +81,7 @@ function validateForm() {
   }
 
 
-  if (message == "") {
+  if (messageValue === "") {
     msg1.innerHTML = "Message must be filled out"
     setTimeout(function () {
       msg1.innerHTML = ""
